@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Block Rain</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .controls button {
+      background: linear-gradient(to bottom, #ffcc00, #cc9900);
+      border: 4px solid #663300;
+      border-radius: 15px;
+      padding: 20px 30px;
+      font-size: 32px;
+      margin: 10px;
+      box-shadow: 0 8px #442200;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .controls button:active {
+      transform: translateY(6px);
+      box-shadow: 0 2px #221100;
+    }
+  </style>
+</head>
+<body>
+  <audio id="lobbyMusic" src="sounds/lobby.mp3" autoplay loop></audio>
+
+  <div class="top-bar">
+    <div class="score">
+      Σκορ: <span id="score">0</span>
+    </div>
+    <div class="best-score">
+      Καλύτερο: <span id="bestScore">0</span>
+    </div>
+    <div class="level">
+      <span class="star">★</span> <span id="level">1</span>
+    </div>
+  </div>
+
+  <div id="game"></div>
+
+  <div class="controls">
+    <button id="leftBtn">⬅️</button>
+    <button id="dropBtn">⬇️</button>
+    <button id="rightBtn">➡️</button>
+  </div>
+
+  <div id="levelUpAnim"></div>
+
+  <script>
+    // Για υποστήριξη σε κινητά
+    window.addEventListener("click", () => {
+      const music = document.getElementById("lobbyMusic");
+      if (music.paused) {
+        music.play().catch(() => {});
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
